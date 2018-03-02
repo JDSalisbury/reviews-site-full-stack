@@ -7,8 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-
-
 @Entity
 public class Category {
 
@@ -16,7 +14,7 @@ public class Category {
 	@GeneratedValue
 	private long id;
 	private String genre;
-	
+
 	@OneToMany(mappedBy = "genre")
 	private Collection<BookReview> books;
 
@@ -58,6 +56,4 @@ public class Category {
 		return true;
 	}
 
-	
-	
 }
