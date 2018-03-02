@@ -23,6 +23,9 @@ public class ReviewSiteMappingTest {
 	
 	@Resource
 	private CategoryRepository categoryRepo;
+	
+	@Resource
+	private BookReviewRepository bookReviewRepo;
 
 	@Test
 	public void shouldSaveAndLoadTags() {
@@ -51,5 +54,19 @@ public class ReviewSiteMappingTest {
 		
 		assertThat(genres.getCategory(), is("Fiction"));
 	}
+	
+	@Test
+	public void shouldSaveAndLoadBookReview() {
+		BookReview book = new BookReview("Cat in the Hat", "It rhymes");
+		book = bookReviewRepo.save(book); 
+		long bookId = book.getId();
+		
+		entityManager.flush(); 
+		entityManager.clear();
+		
+		book = bookReviewRepo.findOne(bookId);
+		assertThat(book.getBookTitle(), is("Cat in the Hat"));
+	}
+	
 	
 }

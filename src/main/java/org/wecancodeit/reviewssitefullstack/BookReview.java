@@ -1,7 +1,15 @@
 package org.wecancodeit.reviewssitefullstack;
 
-public class BookReview {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
+public class BookReview {
+	
+	@Id
+	@GeneratedValue
+	private long id;
 	private String title;
 	private String review;
 
@@ -21,6 +29,11 @@ public class BookReview {
 
 	public String getBookReview() {
 		return review;
+	}
+
+	public long getId() {
+		
+		return id;
 	}
 
 }
