@@ -3,6 +3,7 @@ package org.wecancodeit.reviewssitefullstack;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class BookReview {
@@ -12,7 +13,9 @@ public class BookReview {
 	private long id;
 	private String title;
 	private String review;
-
+	@ManyToOne
+	private Category genre;
+	
 	@SuppressWarnings("unused")
 	private BookReview() {
 
@@ -21,6 +24,12 @@ public class BookReview {
 	public BookReview(String title, String review) {
 		this.title = title;
 		this.review = review;
+	}
+
+	public BookReview(String title, String review, Category genre) {
+		this.title = title;
+		this.review = review;
+		this.genre = genre;
 	}
 
 	public String getBookTitle() {
@@ -34,6 +43,10 @@ public class BookReview {
 	public long getId() {
 		
 		return id;
+	}
+
+	public Category getCategory() {
+		return genre;
 	}
 
 }

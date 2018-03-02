@@ -11,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest
 public class ReviewSiteMappingTest {
@@ -68,5 +69,22 @@ public class ReviewSiteMappingTest {
 		assertThat(book.getBookTitle(), is("Cat in the Hat"));
 	}
 	
+	@Test
+	public void shouldSaveGenreToBookRelationShip() {
+		Category genre = categoryRepo.save(new Category("Fiction"));
+		BookReview book = new BookReview("The Road", "It was Dark", genre);
+		book = bookReviewRepo.save(book);
+		long bookId = book.getId(); 
+		
+		
+		
+		
+		entityManager.flush(); 
+		entityManager.clear();
+		
+		book = bookReviewRepo.findOne(bookId);
+
+		assertThat(book.getCategory(), is(genre));
+	}
 	
 }
