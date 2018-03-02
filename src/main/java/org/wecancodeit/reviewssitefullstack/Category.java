@@ -4,6 +4,10 @@ public class Category {
 
 	private String genre;
 
+	@SuppressWarnings("unused")
+	private Category() {
+	}
+
 	public Category(String genre) {
 		this.genre = genre;
 	}
