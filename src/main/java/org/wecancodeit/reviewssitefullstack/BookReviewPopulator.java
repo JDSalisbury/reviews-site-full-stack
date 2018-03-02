@@ -1,13 +1,36 @@
 package org.wecancodeit.reviewssitefullstack;
 
-import org.springframework.boot.CommandLineRunner;
+import javax.annotation.Resource;
 
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+@Component
 public class BookReviewPopulator implements CommandLineRunner {
+	
+	@Resource
+	private TagRepository tagRepo;
+
+	@Resource
+	private CategoryRepository categoryRepo;
+
+	@Resource
+	private BookReviewRepository bookReviewRepo;
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
-
+		
+		Tag action = new Tag("Action");
+		action = tagRepo.save(action);
+		Tag romance = new Tag("Romance");
+		romance = tagRepo.save(romance);
+		
+		Category fiction = categoryRepo.save(new Category("Fiction"));
+		
+		bookReviewRepo.save(new BookReview("LOTR", "Its long", fiction, action, romance));
+		bookReviewRepo.save(new BookReview("Star Wars", "Sound shouldnt be in space", fiction, action));
+		
+		
 	}
 
 }
