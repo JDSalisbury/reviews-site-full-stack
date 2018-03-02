@@ -20,6 +20,9 @@ public class ReviewSiteMappingTest {
 
 	@Resource
 	private TagRepository tagRepo;
+	
+	@Resource
+	private CategoryRepository categoryRepo;
 
 	@Test
 	public void shouldSaveAndLoadTags() {
@@ -34,4 +37,19 @@ public class ReviewSiteMappingTest {
 
 		assertThat(tags.getTag(), is("Action/Adventure"));
 	}
+	
+	@Test
+	public void shouldSaveAndLoadCategory() {
+		Category genres = new Category("Fiction");
+		genres = categoryRepo.save(genres);
+		long genresId = genres.getId();
+		
+		entityManager.flush();
+		entityManager.clear();
+		
+		genres = categoryRepo.findOne(genresId);
+		
+		assertThat(genres.getCategory(), is("Fiction"));
+	}
+	
 }
