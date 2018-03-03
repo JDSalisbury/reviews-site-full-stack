@@ -68,4 +68,10 @@ public class BookReview {
 		return tags;
 	}
 
+	@Override
+	public String toString() {
+		return "BookReview "+ " of " + title;
+	}
+
+	
 }

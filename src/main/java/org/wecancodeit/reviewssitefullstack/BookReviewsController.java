@@ -31,10 +31,10 @@ public class BookReviewsController {
 		return "category";
 	}
 	
-	@RequestMapping("/review")
+	@RequestMapping("/bookReview")
 	public String getABookReview(@RequestParam Long id,Model model) {
-		model.addAttribute("bookReview", categoryRepo.findOne(id));
-		return "book-review";
+		model.addAttribute("bookReview", bookReviewRepo.findOne(id));
+		return "bookReview";
 	}
 	
 	
