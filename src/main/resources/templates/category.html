@@ -10,12 +10,12 @@
 	<header>
 		<h1>Book Reviews</h1>
 	</header>
-
-	<ul th:each="bookReview: ${category}">
-		<li><a th:href="@{/bookReview(id=${bookReview.id})}"
-			th:text="${bookReview.books}"></a></li>
-	</ul>
-
+	<div th:each="bookReview: ${category}">
+		<ul th:each="books: ${bookReview.books}">
+			<li> <a th:href="@{/bookReview(id=${books.id})}" th:text="${books}"></a> </li>
+		
+		</ul>
+	</div>
 
 </body>
 </html>

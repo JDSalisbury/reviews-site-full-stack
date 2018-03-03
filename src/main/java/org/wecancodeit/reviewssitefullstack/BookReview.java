@@ -70,7 +70,7 @@ public class BookReview {
 
 	@Override
 	public String toString() {
-		return "BookReview "+ " of " + title;
+		return " BookReview "+ " of " + title;
 	}
 
 	

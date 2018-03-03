@@ -19,6 +19,7 @@ public class Category {
 
 	@OneToMany(mappedBy = "genre")
 	private Collection<BookReview> books;
+	
 
 	@SuppressWarnings("unused")
 	private Category() {
@@ -28,10 +29,10 @@ public class Category {
 		this.genre = genre;
 	}
 	
-	public Category(String genre, BookReview...books) {
-		this.genre = genre;
-		this.books = new HashSet<>(asList(books));
-	}
+//	public Category(String genre, BookReview...books) {
+//		this.genre = genre;
+//		this.books = new HashSet<>(asList(books));
+//	}
 	
 	public String getCategory() {
 		return genre;
@@ -41,7 +42,9 @@ public class Category {
 		return id;
 	}
 	
+	
 	public Collection<BookReview> getBooks(){
+		
 		return books;
 	}
 	

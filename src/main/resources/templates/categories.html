@@ -12,8 +12,7 @@
 	</header>
 
 	<ul th:each="category: ${categories}">
-		<li><a th:href="@{/category(id=${category.id})}"
-			th:text="${category.category}"></a></li>
+		<li> <a th:href="@{/category(id=${category.id})}" th:text="${category.category}"></a> </li>
 	</ul>
 
 

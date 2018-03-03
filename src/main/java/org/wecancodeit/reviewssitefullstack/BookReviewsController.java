@@ -26,7 +26,7 @@ public class BookReviewsController {
 	}
 	
 	@RequestMapping("/category")
-	public String getAllCategory(@RequestParam Long id, Model model) {
+	public String getAllReviews(@RequestParam Long id, Model model) {
 		model.addAttribute("category", categoryRepo.findOne(id));
 		return "category";
 	}
