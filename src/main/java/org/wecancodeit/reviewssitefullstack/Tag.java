@@ -1,6 +1,8 @@
 package org.wecancodeit.reviewssitefullstack;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,6 +28,11 @@ public class Tag {
 	public Tag(String type) {
 		this.type = type;
 	}
+	
+	public Tag(String type, BookReview...books) {
+		this.type = type;
+		this.books = new HashSet<>(Arrays.asList(books));
+	}
 
 	public String getTag() {
 
@@ -35,6 +42,10 @@ public class Tag {
 	public long getId() {
 
 		return id;
+	}
+	
+	public Collection<BookReview> getBooks() {
+		return books;
 	}
 
 	@Override

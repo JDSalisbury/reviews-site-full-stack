@@ -1,7 +1,7 @@
 package org.wecancodeit.reviewssitefullstack;
 
-import java.util.Collection;
 
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -25,7 +25,7 @@ public class Category {
 	public Category(String genre) {
 		this.genre = genre;
 	}
-
+	
 	public String getCategory() {
 		return genre;
 	}
@@ -33,7 +33,7 @@ public class Category {
 	public long getId() {
 		return id;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
