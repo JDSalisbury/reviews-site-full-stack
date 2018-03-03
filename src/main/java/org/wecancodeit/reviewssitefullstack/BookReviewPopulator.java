@@ -20,6 +20,8 @@ public class BookReviewPopulator implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		Category fiction = categoryRepo.save(new Category("Fiction"));
+		Category nonfiction = categoryRepo.save(new Category("Non-Fiction"));
+		Category tacos = categoryRepo.save(new Category("Tacos"));
 		
 		Tag action = new Tag("Action");
 		action = tagRepo.save(action);
