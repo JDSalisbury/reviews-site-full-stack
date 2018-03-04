@@ -70,7 +70,7 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "Category [genre=" + genre + "]";
+		return "Category: " + genre;
 	}
 
 	

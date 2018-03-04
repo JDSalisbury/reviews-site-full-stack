@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Book Review</title>
+</head>
+
+<body>
+
+	<header>
+		<h1>A Review of-</h1>
+	</header>
+
+	<div th:each="book: ${bookReviewModel}">
+		<img th:src="${book.image}" style="width: 300px; height: 500px"></img>
+		<h2 th:text="${book.BookTitle}"></h2>
+		<h3 th:text="${book.category}"></h3>
+		<h4 th:text="${book.bookReview}"></h4>
+
+		<a href="http://localhost:8080/categories">Back to Category</a>
+	</div>
+
+</body>
+</html>

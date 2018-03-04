@@ -21,7 +21,7 @@ public class BookReviewPopulator implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		Category fiction = categoryRepo.save(new Category("Fiction"));
 		Category nonfiction = categoryRepo.save(new Category("Non-Fiction"));
-		Category tacos = categoryRepo.save(new Category("Tacos"));
+		
 		
 		Tag action = new Tag("Action");
 		action = tagRepo.save(action);
@@ -30,8 +30,11 @@ public class BookReviewPopulator implements CommandLineRunner {
 		
 		
 		
-		bookReviewRepo.save(new BookReview("LOTR", "Its long", fiction, action, romance));
-		bookReviewRepo.save(new BookReview("Star Wars", "Sound shouldnt be in space", fiction, action));
+		bookReviewRepo.save(new BookReview("The Road", "Its a dark gloomy post apocalyptic book, full of saddness. Just watch the Movie. Its better.", fiction, "/images/lotr.jpg" ,action , romance));
+		bookReviewRepo.save(new BookReview("The Mist", "People get trapped in a convinence store by a thick mist full of creatures from another dimention. Again the Movie was better as long as you watch it in black and white.", nonfiction,  "/images/starwars.jpg" , action));
+		
+		bookReviewRepo.save(new BookReview("The Road", "Its a dark gloomy post apocalyptic book, full of saddness. Just watch the Movie. Its better.", fiction, "/images/lotr.jpg" ,action , romance));
+		bookReviewRepo.save(new BookReview("The Mist", "People get trapped in a convinence store by a thick mist full of creatures from another dimention. Again the Movie was better as long as you watch it in black and white.", nonfiction,  "/images/starwars.jpg" , action));
 		
 		
 	}

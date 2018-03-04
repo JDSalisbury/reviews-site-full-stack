@@ -21,20 +21,20 @@ public class BookReviewsController {
 	
 	@RequestMapping("/categories")
 	public String getAllCategory(Model model) {
-		model.addAttribute("categories", categoryRepo.findAll());
-		return "categories";
+		model.addAttribute("categoriesModel", categoryRepo.findAll());
+		return "categoriesList";
 	}
 	
 	@RequestMapping("/category")
 	public String getAllReviews(@RequestParam Long id, Model model) {
-		model.addAttribute("category", categoryRepo.findOne(id));
-		return "category";
+		model.addAttribute("categoryModel", categoryRepo.findOne(id));
+		return "genre";
 	}
 	
 	@RequestMapping("/bookReview")
 	public String getABookReview(@RequestParam Long id,Model model) {
-		model.addAttribute("bookReview", bookReviewRepo.findOne(id));
-		return "bookReview";
+		model.addAttribute("bookReviewModel", bookReviewRepo.findOne(id));
+		return "review";
 	}
 	
 	

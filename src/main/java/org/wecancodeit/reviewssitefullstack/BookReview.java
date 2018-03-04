@@ -74,7 +74,7 @@ public class BookReview {
 		return genre;
 	}
 	
-	public String getImages() {
+	public String getImage() {
 		return images;
 	}
 	

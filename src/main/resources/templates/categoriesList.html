@@ -11,7 +11,7 @@
 		<h1>A List of Review Categories</h1>
 	</header>
 
-	<ul th:each="category: ${categories}">
+	<ul th:each="category: ${categoriesModel}">
 		<li> <a th:href="@{/category(id=${category.id})}" th:text="${category.category}"></a> </li>
 	</ul>
 

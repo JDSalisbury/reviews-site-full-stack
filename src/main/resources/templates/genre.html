@@ -10,7 +10,7 @@
 	<header>
 		<h1>Book Reviews</h1>
 	</header>
-	<div th:each="bookReview: ${category}">
+	<div th:each="bookReview: ${categoryModel}">
 		<ul th:each="books: ${bookReview.books}">
 			<li> <a th:href="@{/bookReview(id=${books .id})}" th:text="${books}"></a> </li>
 		
