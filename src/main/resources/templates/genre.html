@@ -3,21 +3,30 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>Book Reviews</title>
+
+	<link rel="stylesheet" href="./css/layout.css"></link>
+    <link rel="stylesheet" href="./css/style.css"></link>
+	<title>Books Reviewed</title>
+	
 </head>
 
 <body>
-	<header>
-		<h1>Book Reviews</h1>
-	</header>
-	<div th:each="bookReview: ${categoryModel}">
-		<ul th:each="books: ${bookReview.books}">
-			<li> <a th:href="@{/bookReview(id=${books .id})}" th:text="${books}"></a> </li>
-		</ul>
-	</div>
+	<div class="container">
+	
+		<header class="header">
+			<h1>Book Reviews</h1>
+		</header>
+		
+		<div th:each="bookReview: ${categoryModel}">
+			<ul th:each="books: ${bookReview.books}">
+				<li> <a th:href="@{/bookReview(id=${books .id})}" th:text="${books}"></a> </li>
+			</ul>
+		</div>
 
-	<footer>
-		<a href="http://localhost:8080/categories"><button>Back to home</button></a>
-	</footer>
+		<footer class ="footer">
+			<a href="http://localhost:8080/categories"><button>Back to home</button></a>
+		</footer>
+		
+	</div>
 </body>
 </html>

@@ -3,30 +3,36 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>Book Review</title>
+	<link rel="stylesheet" href="./css/layout.css"></link>
+    <link rel="stylesheet" href="./css/style.css"></link>
+	<title>Book Review</title>
 </head>
-
 
 <script>
 	function goBack() {
 		window.history.back();
 	}
 </script>
+
 <body>
-
-	<header>
-		<h1>A Review of-</h1>
-	</header>
-	<div th:each="book: ${bookReviewModel}">
-		<img th:src="${book.image}" style="width: 300px; height: 500px"></img>
-		<h2 th:text="${book.BookTitle}"></h2>
-		<h3 th:text="${book.category}"></h3>
-		<p th:text="${book.bookReview}"></p>
+	<div class="container">
+	
+		<header class="header">
+			<h1>A Review of-</h1>
+		</header>
+		
+		<div class="review" th:each="book: ${bookReviewModel}">
+			<img th:src="${book.image}" style="width: 300px; height: 500px"></img>
+			<h2 th:text="${book.BookTitle}"></h2>
+			<h3 th:text="${book.category}"></h3>
+			<p th:text="${book.bookReview}"></p>
+		</div>
+		
+		<footer class="footer">
+			<!-- <a th:href="@{/category(id=${book.category.id})}">Back to Category</a> -->
+			<button onclick="goBack()">Go Back</button>
+		</footer>
+		
 	</div>
-	<footer>
-		<!-- <a th:href="@{/category(id=${book.category.id})}">Back to Category</a> -->
-		<button onclick="goBack()">Go Back</button>
-	</footer>
-
 </body>
 </html>
