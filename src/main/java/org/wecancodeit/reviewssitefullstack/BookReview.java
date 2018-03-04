@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-
 @Entity
 public class BookReview {
 
@@ -21,7 +20,7 @@ public class BookReview {
 	private String images;
 	@ManyToOne
 	private Category genre;
-	
+
 	@ManyToMany
 	private Collection<Tag> tags;
 
@@ -40,21 +39,21 @@ public class BookReview {
 		this.review = review;
 		this.genre = genre;
 	}
-	
-	public BookReview(String title, String review, Category genre, Tag...tags) {
+
+	public BookReview(String title, String review, Category genre, Tag... tags) {
 		this.title = title;
 		this.review = review;
 		this.genre = genre;
 		this.tags = new HashSet<>(asList(tags));
 	}
-	
-	public BookReview(String title, String review, Category genre, String images, Tag...tags ) {
+
+	public BookReview(String title, String review, Category genre, String images, Tag... tags) {
 		this.title = title;
 		this.review = review;
 		this.genre = genre;
 		this.images = images;
 		this.tags = new HashSet<>(asList(tags));
-		
+
 	}
 
 	public String getBookTitle() {
@@ -73,19 +72,18 @@ public class BookReview {
 	public Category getCategory() {
 		return genre;
 	}
-	
+
 	public String getImage() {
 		return images;
 	}
-	
-	public Collection<Tag> getTags(){
+
+	public Collection<Tag> getTags() {
 		return tags;
 	}
 
 	@Override
 	public String toString() {
-		return " BookReview "+ " of " + title;
+		return " BookReview " + " of " + title;
 	}
 
-	
 }

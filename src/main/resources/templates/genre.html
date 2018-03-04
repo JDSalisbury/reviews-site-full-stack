@@ -13,9 +13,11 @@
 	<div th:each="bookReview: ${categoryModel}">
 		<ul th:each="books: ${bookReview.books}">
 			<li> <a th:href="@{/bookReview(id=${books .id})}" th:text="${books}"></a> </li>
-		
 		</ul>
 	</div>
 
+	<footer>
+		<a href="http://localhost:8080/categories"><button>Back to home</button></a>
+	</footer>
 </body>
 </html>

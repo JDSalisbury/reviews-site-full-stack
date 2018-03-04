@@ -1,6 +1,5 @@
 package org.wecancodeit.reviewssitefullstack;
 
-
 import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +16,6 @@ public class Category {
 
 	@OneToMany(mappedBy = "genre")
 	private Collection<BookReview> books;
-	
 
 	@SuppressWarnings("unused")
 	private Category() {
@@ -26,12 +24,12 @@ public class Category {
 	public Category(String genre) {
 		this.genre = genre;
 	}
-	
-//	public Category(String genre, BookReview...books) {
-//		this.genre = genre;
-//		this.books = new HashSet<>(asList(books));
-//	}
-	
+
+	// public Category(String genre, BookReview...books) {
+	// this.genre = genre;
+	// this.books = new HashSet<>(asList(books));
+	// }
+
 	public String getCategory() {
 		return genre;
 	}
@@ -39,13 +37,12 @@ public class Category {
 	public long getId() {
 		return id;
 	}
-	
-	
-	public Collection<BookReview> getBooks(){
-		
+
+	public Collection<BookReview> getBooks() {
+
 		return books;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -73,6 +70,4 @@ public class Category {
 		return "Category: " + genre;
 	}
 
-	
-	
 }
