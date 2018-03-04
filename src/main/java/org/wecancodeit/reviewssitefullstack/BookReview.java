@@ -18,6 +18,7 @@ public class BookReview {
 	private long id;
 	private String title;
 	private String review;
+	private String images;
 	@ManyToOne
 	private Category genre;
 	
@@ -46,6 +47,15 @@ public class BookReview {
 		this.genre = genre;
 		this.tags = new HashSet<>(asList(tags));
 	}
+	
+	public BookReview(String title, String review, Category genre, String images, Tag...tags ) {
+		this.title = title;
+		this.review = review;
+		this.genre = genre;
+		this.images = images;
+		this.tags = new HashSet<>(asList(tags));
+		
+	}
 
 	public String getBookTitle() {
 		return title;
@@ -62,6 +72,10 @@ public class BookReview {
 
 	public Category getCategory() {
 		return genre;
+	}
+	
+	public String getImages() {
+		return images;
 	}
 	
 	public Collection<Tag> getTags(){

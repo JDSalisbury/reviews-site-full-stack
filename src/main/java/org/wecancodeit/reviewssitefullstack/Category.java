@@ -2,8 +2,6 @@ package org.wecancodeit.reviewssitefullstack;
 
 
 import java.util.Collection;
-import java.util.HashSet;
-import static java.util.Arrays.asList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
