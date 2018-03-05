@@ -6,6 +6,7 @@ import static java.util.Arrays.asList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -16,6 +17,7 @@ public class BookReview {
 	@GeneratedValue
 	private long id;
 	private String title;
+	@Lob
 	private String review;
 	private String images;
 	@ManyToOne

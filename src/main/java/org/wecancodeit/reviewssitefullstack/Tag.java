@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-
 @Entity
 public class Tag {
 
@@ -20,7 +19,7 @@ public class Tag {
 
 	@ManyToMany(mappedBy = "tags")
 	private Collection<BookReview> books;
-	
+
 	@SuppressWarnings("unused")
 	private Tag() {
 	}
@@ -28,8 +27,8 @@ public class Tag {
 	public Tag(String type) {
 		this.type = type;
 	}
-	
-	public Tag(String type, BookReview...books) {
+
+	public Tag(String type, BookReview... books) {
 		this.type = type;
 		this.books = new HashSet<>(Arrays.asList(books));
 	}
@@ -43,7 +42,7 @@ public class Tag {
 
 		return id;
 	}
-	
+
 	public Collection<BookReview> getBooks() {
 		return books;
 	}
@@ -70,6 +69,4 @@ public class Tag {
 		return true;
 	}
 
-	
-	
 }

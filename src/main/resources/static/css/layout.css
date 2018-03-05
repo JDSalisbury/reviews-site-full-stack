@@ -8,6 +8,17 @@
 	--gap: 20px;
 }
 
+.categories_container{
+	display:grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 50px 100vh 50px;
+	grid-gap: var(--gap);
+	width: 100%;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	padding-top: 1rem;
+}
+
 .container{
 	display:grid;
 	grid-template-columns: 1fr 3fr 1fr;
@@ -41,4 +52,22 @@
 	align-items: center;
 	grid-gap: var(--gap);
 	
+}
+
+.categories{
+	display:grid;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+
+}
+
+.reviewed_books_list{
+	display:grid;
+	grid-column:2/3;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
 }
