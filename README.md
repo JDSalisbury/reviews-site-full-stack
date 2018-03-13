@@ -1,7 +1,7 @@
 Making First FullStack Java Site
 
-![Site](/bookReviewpg1.png)
+![Site](/images/bookReviewpg1.png)
 
-![Site](/bookReviewpg2.png)
+![Site](/images/bookReviewpg2.png)
 
-![Site](/bookReviewpg3.png)
+![Site](/images/bookReviewpg3.png)
