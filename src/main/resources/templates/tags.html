@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link rel="stylesheet" href="./css/layout.css"></link>
+    <link rel="stylesheet" href="./css/style.css"></link>
+	<title>Book Review</title>
+</head>
+
+<script>
+	function goBack() {
+		window.history.back();
+	}
+</script>
+
+<body>
+	<div class="container">
+	
+		<header class="header">
+			<h1>Tags</h1>
+		</header>
+		
+		<div class="review" th:each="tag: ${tagModel}">
+			<h2 th:text="${tag.tag}"></h2>
+			
+			<div th:each="book: ${tag.books}">
+				<p th:text="${book.bookTitle}"></p>
+				<img th:src="${book.image}" style="width: 300px; height: 500px"></img>
+			</div>
+		</div>
+		
+		<footer class="footer">
+			<button onclick="goBack()">Go Back</button>
+		</footer>
+		
+	</div>
+</body>
+</html>

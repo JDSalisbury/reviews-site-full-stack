@@ -37,4 +37,17 @@ public class BookReviewsController {
 		return "review";
 	}
 
+	@RequestMapping("/tag")
+	public String getTagsWithBookReview(@RequestParam Long id, Model model) {
+		model.addAttribute("tagModel", tagRepo.findOne(id));
+		return "tags";
+	}
+	
+	@RequestMapping("/delete-tag")
+	public String deleteIndividualCourse(Long id) {
+		categoryRepo.delete(id);
+		return "redirect:/review";
+	}
+	
+		
 }

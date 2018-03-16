@@ -69,4 +69,11 @@ public class Tag {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Tag [type=" + type + "]";
+	}
+
+	
+	
 }
