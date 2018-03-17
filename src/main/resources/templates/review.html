@@ -3,9 +3,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<link rel="stylesheet" href="./css/layout.css"></link>
-    <link rel="stylesheet" href="./css/style.css"></link>
-	<title>Book Review</title>
+<link rel="stylesheet" href="./css/layout.css"></link>
+<link rel="stylesheet" href="./css/style.css"></link>
+<title>Book Review</title>
 </head>
 
 <script>
@@ -16,47 +16,50 @@
 
 <body>
 	<div class="container">
-	
+
 		<header class="header">
 			<h1>A Review of</h1>
 		</header>
-		
+
 		<div class="review" th:each="book: ${bookReviewModel}">
 			<h2 th:text="${book.BookTitle}"></h2>
 			<img th:src="${book.image}" style="width: 300px; height: 500px"></img>
 			<h3 th:text="${book.category}"></h3>
 			<p th:text="${book.bookReview}"></p>
 			<div th:each="tag: ${book.tags}">
-					<a th:href="@{/tag(id=${tag.id})}" th:text="'Tags:' + ${tag}"></a>
-					<form method="POST">
-						<button type="submit" th:value="${tag.id}" name ="id" th:formaction="@{/delete-tag}">Remove</button>
-					</form>
+				<a th:href="@{/tag(id=${tag.id})}" th:text="'Tags:' + ${tag}"></a>
+				<form method="POST">
+					<button type="submit" th:value="${tag.id}" name="id"
+						th:formaction="@{/delete-tag}">Remove</button>
+				</form>
 			</div>
+			<form method="POST">
+				<h3>Comment Section</h3>
+				<div>
+					<label>Leave comment: </label> <input type="text"
+						name="commentText" />
+				</div>
+
+				<div>
+					<input name="id" type="hidden" th:value="${book.id}" />
+				</div>
+
+				<div>
+					<button type="submit" th:formaction="@{/add-comment}">Enter</button>
+				</div>
+			</form>
+			<ul th:each="comment: ${book.comments}">
+				<li th:text="'Comment: ' + ${comment.comment} + ' | Date: '+ ${comment.date}"></li>
+			</ul>
 		</div>
-		<h3>Comment Section</h3>
-		<form method="POST">
-			<div>
-				<label>Leave comment: </label> <input type="text" name="commentText" />
-			</div>
-			
-			<div>
-				<input name="id" type="hidden" th:value="${book.id}" />
-			</div>
-			
-			<div>
-				<button type="submit" th:formaction="@{/add-comment}">Enter</button>
-			</div>
-		</form>
-		<ul th:each="comment: ${book.comments}">
-			<li
-				th:text="'Comment: ' + ${comment.commentText} + ' | Date: '+ ${comment.date}"></li>
-		</ul>
-		
-		
+
+
+
+
 		<footer class="footer">
 			<button onclick="goBack()">Go Back</button>
 		</footer>
-		
+
 	</div>
 </body>
 </html>
