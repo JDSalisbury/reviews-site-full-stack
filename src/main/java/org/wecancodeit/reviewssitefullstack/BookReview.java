@@ -1,14 +1,17 @@
 package org.wecancodeit.reviewssitefullstack;
 
+import static java.util.Arrays.asList;
+
 import java.util.Collection;
 import java.util.HashSet;
-import static java.util.Arrays.asList;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class BookReview {
@@ -20,6 +23,14 @@ public class BookReview {
 	@Lob
 	private String review;
 	private String images;
+	
+	@OneToMany(mappedBy = "review")
+	private Collection<Comment> comments;
+	
+	public Collection<Comment> getComments() {
+		return comments;
+	}
+
 	@ManyToOne
 	private Category genre;
 

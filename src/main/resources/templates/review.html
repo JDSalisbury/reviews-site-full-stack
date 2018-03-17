@@ -33,6 +33,24 @@
 					</form>
 			</div>
 		</div>
+		<h3>Comment Section</h3>
+		<form method="POST">
+			<div>
+				<label>Leave comment: </label> <input type="text" name="commentText" />
+			</div>
+			
+			<div>
+				<input name="reviewId" type="hidden" th:value="${review.id}" />
+			</div>
+			
+			<div>
+				<button type="submit" th:formaction="@{/add-comment}">Enter</button>
+			</div>
+		</form>
+		<ul th:each="comment: ${book.comments}">
+			<li
+				th:text="'Comment: ' + ${comment.commentText} + ' | Date: '+ ${comment.date}"></li>
+		</ul>
 		
 		
 		<footer class="footer">

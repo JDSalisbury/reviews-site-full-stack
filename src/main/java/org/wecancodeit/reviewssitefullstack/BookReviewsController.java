@@ -1,5 +1,7 @@
 package org.wecancodeit.reviewssitefullstack;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,9 @@ public class BookReviewsController {
 
 	@Resource
 	BookReviewRepository bookReviewRepo;
+	
+	@Resource
+	CommentRepository commentRepo;
 
 	@Resource
 	TagRepository tagRepo;
@@ -36,6 +41,16 @@ public class BookReviewsController {
 		model.addAttribute("bookReviewModel", bookReviewRepo.findOne(id));
 		return "review";
 	}
+	
+	@RequestMapping("/add-comment")
+	public String addComment(String commentText, Long reviewId)
+	{
+		Date date = new Date();
+		BookReview review = bookReviewRepo.findOne(reviewId);
+		Comment comment = new Comment(date, commentText, review);
+		comment = commentRepo.save(comment);
+		return "redirect:/review?id=" + reviewId;
+	}
 
 	@RequestMapping("/tag")
 	public String getTagsWithBookReview(@RequestParam Long id, Model model) {
@@ -43,11 +58,11 @@ public class BookReviewsController {
 		return "tags";
 	}
 	
-	@RequestMapping("/delete-tag")
-	public String deleteIndividualCourse(Long id) {
-		categoryRepo.delete(id);
-		return "redirect:/review";
-	}
+//	@RequestMapping("/delete-tag")
+//	public String deleteIndividualCourse(Long id) {
+//		categoryRepo.delete(id);
+//		return "redirect:/review";
+//	}
 	
 		
 }
