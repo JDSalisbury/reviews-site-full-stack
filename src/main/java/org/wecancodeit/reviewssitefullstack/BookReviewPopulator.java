@@ -1,5 +1,7 @@
 package org.wecancodeit.reviewssitefullstack;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
 
 import org.springframework.boot.CommandLineRunner;
@@ -16,6 +18,9 @@ public class BookReviewPopulator implements CommandLineRunner {
 
 	@Resource
 	private BookReviewRepository bookReviewRepo;
+	
+	@Resource
+	CommentRepository commentRepo;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -27,7 +32,7 @@ public class BookReviewPopulator implements CommandLineRunner {
 		Tag romance = new Tag("Romance");
 		romance = tagRepo.save(romance);
 
-		bookReviewRepo.save(new BookReview("The Road",
+		BookReview	road = bookReviewRepo.save(new BookReview("The Road",
 				"Its a dark gloomy post apocalyptic book, full of saddness. Just watch the Movie. Its better.", fiction,
 				"/images/theroad.jpg", action, romance));
 		bookReviewRepo.save(new BookReview("The Mist",
@@ -41,6 +46,9 @@ public class BookReviewPopulator implements CommandLineRunner {
 				"In interesting look at how  ideas, products, messages and behaviors spread just like viruses do .",
 				nonfiction, "/images/theTippingPoint.jpg", romance));
 
+		Date date = new Date();
+		Comment comment1 = new Comment(date, "",  road);
+		comment1 = commentRepo.save(comment1);
 	}
 
 }

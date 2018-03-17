@@ -43,13 +43,13 @@ public class BookReviewsController {
 	}
 	
 	@RequestMapping("/add-comment")
-	public String addComment(String commentText, Long reviewId)
+	public String addComment(String commentText, Long id)
 	{
 		Date date = new Date();
-		BookReview review = bookReviewRepo.findOne(reviewId);
+		BookReview review = bookReviewRepo.findOne(id);
 		Comment comment = new Comment(date, commentText, review);
 		comment = commentRepo.save(comment);
-		return "redirect:/review?id=" + reviewId;
+		return "redirect:/bookReview?id=" + id;
 	}
 
 	@RequestMapping("/tag")

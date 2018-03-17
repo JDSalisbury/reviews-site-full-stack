@@ -4,6 +4,8 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.Assert.assertThat;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -27,6 +29,9 @@ public class ReviewSiteMappingTest {
 
 	@Resource
 	private BookReviewRepository bookReviewRepo;
+	
+	@Resource
+	private CommentRepository commentRepo;
 
 	@Test
 	public void shouldSaveAndLoadTags() {
@@ -100,5 +105,23 @@ public class ReviewSiteMappingTest {
 		lotr = bookReviewRepo.findOne(bookReviewId);
 		assertThat(lotr.getTags(), containsInAnyOrder(action, adventure));
 	}
-
+	
+	@Test
+	public void shouldSaveCommentsToBookRelationship() {
+		Date date = new Date();
+		Tag action = tagRepo.save(new Tag("Action"));
+		Tag adventure = tagRepo.save(new Tag("Adventure"));
+		Category genre = categoryRepo.save(new Category("Fiction"));
+		BookReview lotr = new BookReview("LOTR", "Lots of walking", genre, action, adventure);
+		lotr = bookReviewRepo.save(lotr);
+		
+		Comment comment = commentRepo.save(new Comment(date, "it was long", lotr));
+		long commentId = comment.getId();
+		
+		entityManager.flush();
+		entityManager.clear();
+		
+		comment = commentRepo.findOne(commentId);
+		assertThat(comment.getReview(), is(lotr));
+	}
 }
