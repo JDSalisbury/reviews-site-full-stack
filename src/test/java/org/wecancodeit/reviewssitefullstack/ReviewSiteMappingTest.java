@@ -1,6 +1,8 @@
 package org.wecancodeit.reviewssitefullstack;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.Assert.assertThat;
 
@@ -124,4 +126,68 @@ public class ReviewSiteMappingTest {
 		comment = commentRepo.findOne(commentId);
 		assertThat(comment.getReview(), is(lotr));
 	}
+	
+	
+	@Test
+	public void shouldRemoveTag() {
+		Tag underTag = new Tag("test");
+		tagRepo.save(underTag);
+		
+		Tag underTagTwo = new Tag("testfortwo");
+		tagRepo.save(underTagTwo);
+		Long tagId = underTagTwo.getId();
+		
+		
+		Category underCategory = new Category("one");
+		categoryRepo.save(underCategory);
+		
+		BookReview underTest = new BookReview("Cat in hat", "Whatever", underCategory,"www", underTag, underTagTwo);
+		bookReviewRepo.save(underTest);
+		Long bookId = underTest.getId();
+		
+		entityManager.flush();
+		entityManager.clear();
+		
+		underTest = bookReviewRepo.findOne(bookId);
+		
+		
+		underTest.removeTag(tagId);
+				
+		assertThat(underTest.getTags(), not(contains(underTagTwo))); 
+		
+	}
+	
+	
+	@Test
+	public void nullTagShouldBeRemoved() {
+		Tag underTag = new Tag("test");
+		tagRepo.save(underTag);
+		
+		Tag underTagTwo = new Tag("testfortwo");
+		tagRepo.save(underTagTwo);
+		Long tagId = underTagTwo.getId();
+		
+		
+		Category underCategory = new Category("one");
+		categoryRepo.save(underCategory);
+		
+		BookReview underTest = new BookReview("Cat in hat", "Whatever", underCategory,"www", underTag);
+		bookReviewRepo.save(underTest);
+		Long bookId = underTest.getId();
+		
+		entityManager.flush();
+		entityManager.clear();
+		
+		underTest = bookReviewRepo.findOne(bookId);
+		
+		
+		underTest.removeTag(tagId);
+				
+		assertThat(underTest.getTags(), not(contains(underTagTwo))); 
+		
+	}
+	
+	
+	
+	
 }

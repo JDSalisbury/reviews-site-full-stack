@@ -23,10 +23,10 @@ public class BookReview {
 	@Lob
 	private String review;
 	private String images;
-	
+
 	@OneToMany(mappedBy = "review")
 	private Collection<Comment> comments;
-	
+
 	public Collection<Comment> getComments() {
 		return comments;
 	}
@@ -93,7 +93,17 @@ public class BookReview {
 	public Collection<Tag> getTags() {
 		return tags;
 	}
-	
+
+	public void removeTag(Long id) {
+		Tag tagToRemove = null;
+		for (Tag tag : tags) {
+			if (tag.getId() == id) {
+				tagToRemove = tag;
+			}
+		}
+		
+		tags.remove(tagToRemove);
+	}
 
 	@Override
 	public String toString() {
@@ -121,7 +131,5 @@ public class BookReview {
 			return false;
 		return true;
 	}
-	
-	
 
 }
