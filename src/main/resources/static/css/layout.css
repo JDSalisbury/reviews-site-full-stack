@@ -30,6 +30,15 @@
 	padding-top: 1rem;
 }
 
+.tag__container{
+	display:grid;
+	grid-template-rows: auto;
+	
+	padding-left: 1rem;
+	padding-right: 1rem;
+	padding-top: 1rem;
+}
+
 .header{
 	display:flex;
 	justify-content: center;

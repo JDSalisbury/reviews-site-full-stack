@@ -13,6 +13,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.jayway.jsonpath.internal.function.json.Append;
+
 @Entity
 public class BookReview {
 
@@ -94,6 +96,11 @@ public class BookReview {
 		return tags;
 	}
 
+	public void  setTag(String name) {
+		Tag addedTag = new Tag(name);
+		tags.add(addedTag);
+	}
+	
 	public void removeTag(Long id) {
 		Tag tagToRemove = null;
 		for (Tag tag : tags) {

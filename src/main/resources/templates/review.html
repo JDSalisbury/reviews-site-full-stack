@@ -26,9 +26,26 @@
 			<img th:src="${book.image}" style="width: 300px; height: 500px"></img>
 			<h3 th:text="${book.category}"></h3>
 			<p th:text="${book.bookReview}"></p>
-			<div th:each="tag: ${book.tags}">
+			<form method="POST">
+				<h2>Tags</h2>
+				<div>
+					<label>Add A Tag: </label> <input id="tag-input" type="text"
+						name="tagName" />
+				</div> 
+				
+				<div>
+					<input  name="id" type="hidden" th:value="${book.id}" />
+				</div>
+				
+				<div>
+					<button type="submit" th:attr="data-book-id=${book.id}">Add</button>
+				</div>
+				
+			</form>	
+			<div class="tag-collection" th:each="tag: ${book.tags}">
 				<div th:id="'tag-'+ ${tag.id}">
-				<a th:href="@{/tag(id=${tag.id})}" th:text="'Tags:' + ${tag}"></a>
+				
+				<a th:href="@{/tag(id=${tag.id})}" th:text="${tag}"></a>
 				<!--   <form method="POST">-->
 					
 					<button type="submit" th:attr="data-id=${tag.id},data-title=${book.BookTitle}" name="id" class="removeTag">Remove</button>

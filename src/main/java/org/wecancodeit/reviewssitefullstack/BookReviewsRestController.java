@@ -25,20 +25,29 @@ public class BookReviewsRestController {
 
 	@RequestMapping("/delete-tag")
 	public String deleteIndvidualTag(@RequestParam Long id, @RequestParam String bookReviewTitle) {
-		Logger logger = Logger.getLogger("delete-tag-logger");
-		logger.info("Tag id is " + id + ", and review title is " + bookReviewTitle);
+
 		Tag tagRemoval = tagRepo.findOne(id);
 		BookReview underReview = bookReviewRepo.findByTitle(bookReviewTitle);
-		logger.info(underReview.getBookTitle());
-		logger.info(tagRemoval.getTag());
 
 		if (tagRemoval != null) {
 			underReview.removeTag(id);
 		}
 		bookReviewRepo.save(underReview);
-		Long animeReviewid = underReview.getId();
-
+		
 		return id.toString();
+	}
+	
+	@RequestMapping("/add-tag")
+	public String addTag(@RequestParam String tagName, @RequestParam String bookReviewTitle) {
+		BookReview underReview = bookReviewRepo.findByTitle(bookReviewTitle);
+
+		if(tagName != null) {
+		Tag tagToAdd = new Tag(tagName,underReview); //creating relationship with BookReview
+		tagRepo.save(tagToAdd);
+		} 
+		
+		
+		return underReview.getBookTitle(); 
 	}
 
 }

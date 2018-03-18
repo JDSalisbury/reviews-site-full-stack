@@ -59,6 +59,8 @@ public class BookReviewsController {
 		return "tags";
 	}
 	
+	
+	
 //	@RequestMapping("/delete-tag")
 //	public String deleteIndvidualTag(@RequestParam Long id, @RequestParam String bookReviewTitle) {
 //		Logger logger = Logger.getLogger("delete-tag-logger");

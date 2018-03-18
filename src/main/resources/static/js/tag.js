@@ -11,6 +11,13 @@ document.addEventListener("DOMContentLoaded", function() {
 	
 });
 
+//addTag
+document.addEventListener("DOMContentLoaded", function() {
+	const addTagButton = document.querySelector('#addButton');
+	addTagButton.addEventListener('click',addTag)
+}
+
+
 function removeTag(event) {
 	const theButton = event.target
 	const theDivWrappingTheButton = theButton.parentElement
@@ -28,5 +35,29 @@ function removeTag(event) {
 		}
 	}
 	xhr.open('GET', 'http://localhost:8080/delete-tag?id=' + encodeURI(id) + '&bookReviewTitle=' + encodeURI(title),true)
+	//id and title are retrieved with the button press
 	xhr.send()
 }
+
+
+function addTag(event){
+	const theButtonAdd = event.target;
+	const tagTitle = docuement.querySelector('#tag-input').value
+	const bookId = document.querySelector('#boodTagID').value
+	console.log(tagTitle);
+	const xhr = new XMLHttpRequest()//ajax request 
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState === 4 && xhr.status === 200) {
+			console.log(xhr.response);
+
+			
+		}
+	}
+	xhr.open('GET', 'http://localhost:8080/add-tag?id=' + encodeURI(id) + '&bookReviewTitle=' + encodeURI(title),true)
+	//id and title are retrieved with the button press
+	xhr.send()
+	
+	
+}
+
+
