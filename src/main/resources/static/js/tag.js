@@ -11,11 +11,11 @@ document.addEventListener("DOMContentLoaded", function() {
 	
 });
 
-//addTag
+addTag
 document.addEventListener("DOMContentLoaded", function() {
 	const addTagButton = document.querySelector('#addButton');
 	addTagButton.addEventListener('click',addTag)
-}
+})
 
 
 function removeTag(event) {
@@ -59,5 +59,6 @@ function addTag(event){
 	
 	
 }
+
 
 
