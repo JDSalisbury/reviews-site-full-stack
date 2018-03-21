@@ -80,3 +80,9 @@
 	justify-content: space-around;
 	align-items: center;
 }
+
+.by_tag_book_list{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
