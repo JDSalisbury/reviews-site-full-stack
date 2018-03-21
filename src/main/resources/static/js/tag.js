@@ -41,12 +41,12 @@ function removeTag(event) {
 
 
 function addTag(event){
-	event.preventDefault();
+	event.preventDefault();//prevents forms from refreshing
 	const theButtonAdd = event.target;
 	const tagTitle = document.querySelector('#tag-input').value
-	console.log(tagTitle);
+	// console.log(tagTitle);
 	const xhr = new XMLHttpRequest()//ajax request 
-	const bookTitle = document.querySelector('#bookTagID').value
+	const bookTitle = document.querySelector('#bookTagID').value // this is for requestparam 
 	const tagLoop = document.querySelector('.tag-collection');
 	const tagContainer = document.createElement('button');
 	const booktitle = theButtonAdd.dataset.title;
@@ -54,7 +54,7 @@ function addTag(event){
 		if (xhr.readyState === 4 && xhr.status === 200) {
 			console.log(xhr);
 			tagContainer.innerText = tagTitle;
-			console.log(tagContainer.innerText);
+			// console.log(tagContainer.innerText);
 			tagLoop.appendChild(tagContainer); 
 //			console.log(JSON.parse(xhr.responseText));//set res to json
 		}
