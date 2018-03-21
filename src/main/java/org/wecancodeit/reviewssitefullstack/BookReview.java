@@ -96,9 +96,8 @@ public class BookReview {
 		return tags;
 	}
 
-	public void  setTag(String name) {
-		Tag addedTag = new Tag(name);
-		tags.add(addedTag);
+	public void  setTag(Tag name) {
+			tags.add(name);
 	}
 	
 	public void removeTag(Long id) {

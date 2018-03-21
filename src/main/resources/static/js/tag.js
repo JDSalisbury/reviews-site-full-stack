@@ -15,7 +15,7 @@ addTag
 document.addEventListener("DOMContentLoaded", function() {
 	const addTagButton = document.querySelector('#addButton');
 	addTagButton.addEventListener('click',addTag)
-})
+});
 
 
 function removeTag(event) {
@@ -41,23 +41,28 @@ function removeTag(event) {
 
 
 function addTag(event){
+	event.preventDefault();//prevents forms from refreshing
 	const theButtonAdd = event.target;
-	const tagTitle = docuement.querySelector('#tag-input').value
-	const bookId = document.querySelector('#boodTagID').value
-	console.log(tagTitle);
+	const tagTitle = document.querySelector('#tag-input').value
+	// console.log(tagTitle);
 	const xhr = new XMLHttpRequest()//ajax request 
+	const bookTitle = document.querySelector('#bookTagID').value // this is for requestparam 
+	const tagLoop = document.querySelector('.tag-collection');
+	const tagContainer = document.createElement('button');
+	const booktitle = theButtonAdd.dataset.title;
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4 && xhr.status === 200) {
-			console.log(xhr.response);
-
-			
+			console.log(xhr);
+			tagContainer.innerText = tagTitle;
+			// console.log(tagContainer.innerText);
+			tagLoop.appendChild(tagContainer); 
+//			console.log(JSON.parse(xhr.responseText));//set res to json
 		}
+		
 	}
-	xhr.open('GET', 'http://localhost:8080/add-tag?id=' + encodeURI(id) + '&bookReviewTitle=' + encodeURI(title),true)
+	xhr.open('POST', '/add-tag?bookReviewTitle=' + bookTitle + '&tagName=' + tagTitle,true)
 	//id and title are retrieved with the button press
 	xhr.send()
-	
-	
 }
 
 

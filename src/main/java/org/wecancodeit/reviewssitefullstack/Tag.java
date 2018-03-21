@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Tag {
 
@@ -16,7 +18,8 @@ public class Tag {
 	@GeneratedValue
 	private long id;
 	private String type;
-
+	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "tags")
 	private Collection<BookReview> books;
 
@@ -72,6 +75,11 @@ public class Tag {
 	@Override
 	public String toString() {
 		return " " + type;
+	}
+
+	public void setBook(BookReview book) {
+		// TODO Auto-generated method stub
+		books.add(book);
 	}
 
 	

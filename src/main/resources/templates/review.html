@@ -27,21 +27,21 @@
 			<h3 th:text="${book.category}"></h3>
 			<p th:text="${book.bookReview}"></p>
 			<form method="POST">
-				<h2>Tags</h2>
+				 <h2>Tags</h2>
 				<div>
-					<label>Add A Tag: </label> <input id="tag-input" type="text"
-						name="tagName" />
+					<label>Add A Tag: </label> <input required="required" id="tag-input" type="text"
+						name="tagName"/>
 				</div> 
 				
 				<div>
-					<input  name="id" type="hidden" th:value="${book.id}" />
+					<button id="addButton" type="submit" th:attr="data-title=${book.BookTitle}">Add</button>
 				</div>
-				
 				<div>
-					<button id="addButton" type="submit" th:attr="data-book-id=${book.id}">Add</button>
-				</div>
+					<input id="bookTagID" name="id" type="hidden" th:value="${book.BookTitle}" />
+				</div> 
 				
-			</form>	
+			</form>
+			
 			<div class="tag-collection" th:each="tag: ${book.tags}">
 				<div th:id="'tag-'+ ${tag.id}">
 				
