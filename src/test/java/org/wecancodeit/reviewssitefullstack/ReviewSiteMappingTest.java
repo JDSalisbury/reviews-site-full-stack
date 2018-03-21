@@ -195,19 +195,19 @@ public class ReviewSiteMappingTest {
 		
 		Tag underTagTwo = new Tag("Dark");
 		tagRepo.save(underTagTwo);
-		Long tagId = underTagTwo.getId();
+	
 		
 		Category underCategory = new Category("one");
 		categoryRepo.save(underCategory);
 		
 		BookReview underTest = new BookReview("Cat in hat", "Whatever", underCategory,"www", underTag);
 		bookReviewRepo.save(underTest);
-		Long bookId = underTest.getId();
+		
 		
 		entityManager.flush();
 		entityManager.clear();
 		
-		underTest.setTag("Dark");
+		underTest.setTag(underTagTwo);
 		Collection<Tag> underTestTagCheck = underTest.getTags();
 		assertThat(underTestTagCheck.size(), is(2)); 
 		

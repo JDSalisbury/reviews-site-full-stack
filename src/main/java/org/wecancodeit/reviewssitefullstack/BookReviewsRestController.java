@@ -1,6 +1,6 @@
 package org.wecancodeit.reviewssitefullstack;
 
-import java.util.logging.Logger;
+import java.util.Collection;
 
 import javax.annotation.Resource;
 
@@ -33,21 +33,23 @@ public class BookReviewsRestController {
 			underReview.removeTag(id);
 		}
 		bookReviewRepo.save(underReview);
-		
+
 		return id.toString();
 	}
-	
-	@RequestMapping("/add-tag")
-	public String addTag(@RequestParam String tagName, @RequestParam String bookReviewTitle) {
-		BookReview underReview = bookReviewRepo.findByTitle(bookReviewTitle);
 
-		if(tagName != null) {
-		Tag tagToAdd = new Tag(tagName,underReview); //creating relationship with BookReview
-		tagRepo.save(tagToAdd);
-		} 
-		
-		
-		return underReview.getBookTitle(); 
+	@RequestMapping("/add-tag")
+	public Tag addTag(@RequestParam String tagName, @RequestParam String bookReviewTitle) {
+		BookReview underReview = bookReviewRepo.findByTitle(bookReviewTitle);
+		Tag tagToAdd = tagRepo.findByType(tagName);
+		// creating relationship with BookReview
+		if (tagToAdd == null) {
+			tagToAdd = new Tag(tagName, underReview);
+			tagRepo.save(tagToAdd);
+			underReview.setTag(tagToAdd);
+			bookReviewRepo.save(underReview);
+		}
+
+		return tagToAdd;
 	}
 
 }
