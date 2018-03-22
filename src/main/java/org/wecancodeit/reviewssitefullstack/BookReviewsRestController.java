@@ -42,6 +42,15 @@ public class BookReviewsRestController {
 		BookReview underReview = bookReviewRepo.findByTitle(bookReviewTitle);
 		Tag tagToAdd = tagRepo.findByType(tagName);
 		// creating relationship with BookReview
+		
+		if(tagToAdd != null) {
+			underReview.setTag(tagToAdd);
+			bookReviewRepo.save(underReview);
+		}
+		
+		// if tagToAdd is equal to a Tag in tagRepo
+			// underReview.setTag(tagToAdd)
+		
 		if (tagToAdd == null) {
 			tagToAdd = new Tag(tagName, underReview);
 			tagRepo.save(tagToAdd);
